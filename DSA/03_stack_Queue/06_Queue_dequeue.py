@@ -11,6 +11,12 @@ class Queue:
         self.last = new_node
         self.length = 1
 
+    def isEmpty(self):
+        if self.first == None and self.last == None and self.length == 0:
+            return True
+        else: 
+            return False
+
     def print_queue(self):
         temp = self.first
         while temp is not None:
@@ -29,7 +35,7 @@ class Queue:
         return True
 
     def dequeue(self):
-        if self.length == 0:
+        if self.isEmpty():
             return None
         temp = self.first
         if self.length == 1:
@@ -40,6 +46,17 @@ class Queue:
             temp.next = None
         self.length -= 1
         return temp
+    
+    def peek(self):
+        if self.isEmpty():
+            return None
+        else: 
+            return self.first.value
+        
+    def delete(self):
+        self.first = None
+        self.last = None
+        self.length = 0
 
  
 my_queue = Queue(1)
@@ -51,3 +68,5 @@ print(my_queue.dequeue())
 print(my_queue.dequeue())
 # (0) Items - Returns None
 print(my_queue.dequeue())
+
+print(my_queue.peek())
